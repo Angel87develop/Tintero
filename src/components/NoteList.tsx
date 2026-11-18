@@ -4,6 +4,7 @@ import { excerpt, taskProgress, timeAgo, visibleNotes } from '../store'
 import type { SortKey, State } from '../types'
 import { STATUS_COLOR, STATUS_LABEL } from '../types'
 import { Icon } from './Icons'
+import { WindowControls } from './WindowControls'
 
 export function NoteList({
   state,
@@ -34,15 +35,17 @@ export function NoteList({
       <header className="nl-head">
         <button className="icon-btn" title="Mostrar/ocultar barra lateral" onClick={() => dispatch({ type: 'toggleSidebar' })}><Icon name="menu" /></button>
         <h2>{title}</h2>
-        {!state.sidebarOpen && (
-          <button className="icon-btn" title="Configuración" onClick={onSettings}><Icon name="gear" /></button>
-        )}
+        {/* Sustituye a la fila superior de la barra lateral cuando esta no se ve */}
+        <div className="nl-window">
+          <WindowControls />
+          <button className="icon-btn" title="Configuración" aria-label="Configuración" onClick={onSettings}><Icon name="gear" /></button>
+        </div>
         {f.kind === 'trash' ? (
           <button className="btn ghost" disabled={!notes.length} onClick={() => {
             if (!state.settings.confirmDelete || confirm('¿Vaciar la papelera? No se puede deshacer.')) dispatch({ type: 'emptyTrash' })
           }}>Vaciar</button>
         ) : (
-          <button className="btn primary" title="Nueva nota (Ctrl+N)" onClick={() => dispatch({ type: 'newNote' })}><Icon name="plus" size={14} /> Nota</button>
+          <button className="btn primary" title="Nueva nota (Ctrl+N)" aria-label="Nueva nota" onClick={() => dispatch({ type: 'newNote' })}><Icon name="plus" size={14} /> <span className="nl-new-label">Nota</span></button>
         )}
       </header>
       <div className="nl-tools">

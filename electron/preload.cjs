@@ -10,4 +10,5 @@ contextBridge.exposeInMainWorld('tinteroDesktop', {
   version: () => ipcRenderer.invoke('tintero:version'),
   openDataDir: () => ipcRenderer.invoke('tintero:openDataDir'),
   setZoom: (factor) => webFrame.setZoomFactor(Number(factor) || 1),
+  windowControl: (action) => ipcRenderer.send('tintero:window', action),
 })

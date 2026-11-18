@@ -102,9 +102,28 @@ select option { background: var(--panel); color: var(--fg); }
 
 /* ---------- barra lateral ---------- */
 .sidebar { background: var(--side); border-right: 1px solid var(--border); display: flex; flex-direction: column; min-width: 0; }
-.brand { display: flex; align-items: center; gap: 7px; padding: 16px 10px 10px 18px; font: italic 500 23px/1 var(--serif); color: var(--h); }
-.brand svg { width: 15px; height: 15px; }
-.brand svg path, .empty-mark svg path { fill: var(--h); }
+.side-top { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 10px 10px 6px 14px; }
+.side-top .icon-btn, .nl-window .icon-btn { color: var(--faint); }
+.side-top .icon-btn:hover, .nl-window .icon-btn:hover { color: var(--fg-strong); }
+.empty-mark svg path { fill: var(--h); }
+
+/* ---------- controles de ventana ---------- */
+.win-controls { display: flex; align-items: center; flex: none; }
+.win-dot { width: 23px; height: 28px; padding: 0; border: 0; background: none; display: grid; place-items: center; }
+.win-dot span { width: 15px; height: 15px; border-radius: 50%; display: grid; place-items: center; color: #0000; box-shadow: inset 0 0 0 .5px #0003; }
+.win-dot svg { width: 12px; height: 12px; }
+.win-dot.close span { background: #ff5f57; }
+.win-dot.minimize span { background: #febc2e; }
+.win-dot.maximize span { background: #28c840; }
+.win-controls:hover .win-dot span, .win-dot:focus-visible span { color: #0000008c; }
+.nl-window { display: none; }
+.app.no-sidebar .nl-window { display: contents; }
+.nl-head .win-controls { order: -1; }
+
+/* Sin barra de título, estas franjas superiores son las que permiten arrastrar la ventana */
+.side-top, .nl-head, .nv-meta-row { -webkit-app-region: drag; }
+.side-top button, .nl-head button, .nv-meta-row button, .nv-meta-row select, .nv-meta-row input, .nv-meta-row .tags { -webkit-app-region: no-drag; }
+.palette-backdrop, .diagram-viewer { -webkit-app-region: no-drag; }
 .palette-trigger {
   display: flex; align-items: center; gap: 8px; margin: 4px 18px 8px; height: 30px; padding: 0;
   border: 0; border-bottom: 1px solid var(--border); background: none;
@@ -359,8 +378,6 @@ select.pill:hover { color: var(--fg-strong); }
 .ask-row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
 
 /* ---------- configuración ---------- */
-.brand span { flex: 1; }
-.brand-gear { color: var(--faint); }
 .settings-backdrop { padding: 6vh 16px; }
 .settings {
   width: min(900px, 100%); height: min(680px, 88vh); align-self: flex-start; display: grid; grid-template-columns: 200px minmax(0, 1fr);
@@ -462,6 +479,8 @@ select.pill:hover { color: var(--fg-strong); }
 @media (max-width: 900px) {
   .app, .app.no-sidebar { grid-template-columns: 270px minmax(0, 1fr); }
   .app .sidebar { display: none; }
+  .nl-window { display: contents; }
+  .nl-new-label { display: none; }
   .mode-split .preview-pane { display: none; }
   .mode-split .editor-pane { border-right: 0; }
   .nv-head { padding-left: 20px; }

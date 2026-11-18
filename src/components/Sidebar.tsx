@@ -6,6 +6,7 @@ import { countBy } from '../store'
 import type { Filter, Notebook, State, Status } from '../types'
 import { STATUS_COLOR, STATUS_LABEL } from '../types'
 import { Icon } from './Icons'
+import { WindowControls } from './WindowControls'
 import { shortcutOf } from '../settings'
 
 const same = (a: Filter, b: Filter) => JSON.stringify(a) === JSON.stringify(b)
@@ -82,10 +83,9 @@ export function Sidebar({ state, dispatch, onPalette, onSettings }: { state: Sta
 
   return (
     <aside className="sidebar">
-      <div className="brand">
-        <svg viewBox="0 0 32 32" width="20" height="20"><path d="M16 3c5 7 9 11 9 17a9 9 0 0 1-18 0c0-6 4-10 9-17z" fill="var(--accent)" /></svg>
-        <span>Tintero</span>
-        <button className="icon-btn brand-gear" title="Configuración" aria-label="Configuración" onClick={onSettings}>
+      <div className="side-top">
+        <WindowControls />
+        <button className="icon-btn" title="Configuración" aria-label="Configuración" onClick={onSettings}>
           <Icon name="gear" />
         </button>
       </div>

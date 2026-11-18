@@ -70,6 +70,8 @@ function createWindow() {
     minWidth: 760,
     minHeight: 480,
     title: 'Tintero',
+    // Sin barra de título nativa: los controles de ventana viven junto a la rueda de engranaje.
+    frame: false,
     autoHideMenuBar: true,
     backgroundColor: '#1b1916',
     show: false,
@@ -120,6 +122,18 @@ function createWindow() {
 // La app ya no tiene barra de menú: todo se configura desde la rueda de engranaje.
 ipcMain.handle('tintero:version', () => app.getVersion())
 ipcMain.handle('tintero:openDataDir', () => shell.openPath(dataDir()))
+
+ipcMain.on('tintero:window', (e, action) => {
+  const win = BrowserWindow.fromWebContents(e.sender)
+  if (!win) return
+  if (action === 'close') win.close()
+  else if (action === 'minimize') win.minimize()
+  else if (action === 'maximize') {
+    if (win.isFullScreen()) win.setFullScreen(false)
+    else if (win.isMaximized()) win.unmaximize()
+    else win.maximize()
+  }
+})
 
 /** Atajos de ventana que siguen funcionando sin menú (herramientas de desarrollo, recarga, pantalla completa). */
 function windowShortcuts(win) {

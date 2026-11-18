@@ -7,6 +7,7 @@ export interface TinteroDesktop {
   version: () => Promise<string>
   openDataDir: () => Promise<string>
   setZoom: (factor: number) => void
+  windowControl: (action: 'close' | 'minimize' | 'maximize') => void
 }
 
 declare global {
