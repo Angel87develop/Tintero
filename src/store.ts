@@ -59,7 +59,7 @@ function initial(): State {
     query: '',
     sort: 'updatedAt',
     viewMode: 'split',
-    theme: 'tinta',
+    theme: 'papel',
     sidebarOpen: true,
     settings: DEFAULT_SETTINGS,
   }

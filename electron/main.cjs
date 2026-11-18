@@ -71,7 +71,7 @@ function createWindow() {
     minHeight: 480,
     title: 'Tintero',
     autoHideMenuBar: true,
-    backgroundColor: '#16161d',
+    backgroundColor: '#1b1916',
     show: false,
     icon: path.join(__dirname, '..', 'build', 'icon.png'),
     webPreferences: {

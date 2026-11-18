@@ -57,10 +57,10 @@ export const STATUS_LABEL: Record<Status, string> = {
 
 export const STATUS_COLOR: Record<Status, string> = {
   none: 'var(--muted)',
-  active: '#3fb27f',
-  onHold: '#e0a03a',
-  completed: '#5b8def',
-  dropped: '#d0626a',
+  active: '#6f9060',
+  onHold: '#bd8a2f',
+  completed: '#5f86a3',
+  dropped: '#b0604f',
 }
 
 export const THEMES: { id: ThemeId; label: string }[] = [

@@ -46,10 +46,10 @@ export interface CustomTheme {
 }
 
 export const BUILTIN_THEMES: { id: ThemeId; label: string; dark: boolean; swatch: string[] }[] = [
-  { id: 'tinta', label: 'Tinta', dark: true, swatch: ['#16161d', '#23232f', '#8b7cf6', '#d8d8e4'] },
-  { id: 'papel', label: 'Papel', dark: false, swatch: ['#fdfcf9', '#f4f2ec', '#6a52d9', '#33322e'] },
-  { id: 'fiordo', label: 'Fiordo', dark: true, swatch: ['#2e3440', '#3b4252', '#88c0d0', '#d8dee9'] },
-  { id: 'bosque', label: 'Bosque', dark: true, swatch: ['#1a1f1b', '#242b25', '#8fc97a', '#d6dccf'] },
+  { id: 'tinta', label: 'Tinta', dark: true, swatch: ['#1b1916', '#24211c', '#e5805a', '#d9d0bf'] },
+  { id: 'papel', label: 'Papel', dark: false, swatch: ['#f7f2e7', '#efe8d9', '#a8321c', '#2b2721'] },
+  { id: 'fiordo', label: 'Fiordo', dark: true, swatch: ['#1f262b', '#293238', '#e0a458', '#ced8da'] },
+  { id: 'bosque', label: 'Bosque', dark: true, swatch: ['#1c211b', '#262c24', '#c9b15e', '#d5d9c8'] },
 ]
 
 /* ---------------------------------------------------------------------------
@@ -138,7 +138,7 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   customThemes: [],
   uiFontSize: 14,
-  editorFont: 'sans',
+  editorFont: 'serif',
   customFont: '',
   editorFontSize: 15,
   lineHeight: 1.75,
@@ -163,7 +163,7 @@ export const shortcutOf = (s: Settings, id: ShortcutId) =>
 
 const FONT_STACK: Record<Exclude<EditorFont, 'custom'>, string> = {
   sans: 'var(--sans)',
-  serif: "'Iowan Old Style', 'Palatino Linotype', Georgia, serif",
+  serif: 'var(--serif)',
   mono: 'var(--mono)',
 }
 

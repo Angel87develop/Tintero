@@ -27,17 +27,10 @@ function sdDrop(x, y) {
 for (let j = 0; j < S; j++) {
   for (let i = 0; i < S; i++) {
     const x = i - S / 2 + 0.5, y = j - S / 2 + 0.5
-    const bg = clamp(0.5 - sdRoundRect(x, y, 236, 96))
-    const t = j / S
-    let r = lerp(36, 22, t), g = lerp(34, 22, t), b = lerp(52, 32, t)
+    const bg = clamp(0.5 - sdRoundRect(x, y, 236, 56))
+    // Papel de fondo y gota de tinta plana
     const d = clamp(0.5 - sdDrop(x, y))
-    // degradado de la gota: violeta claro arriba → violeta intenso abajo
-    const dt = clamp((y + 190) / 380)
-    const dr = lerp(178, 110, dt), dg = lerp(160, 88, dt), db = lerp(255, 230, dt)
-    // brillo
-    const hl = clamp(0.5 - (Math.hypot(x + 50, y - 10) - 22)) * 0.55
-    r = lerp(r, dr, d); g = lerp(g, dg, d); b = lerp(b, db, d)
-    r = lerp(r, 255, hl * d); g = lerp(g, 255, hl * d); b = lerp(b, 255, hl * d)
+    const r = lerp(247, 27, d), g = lerp(242, 23, d), b = lerp(231, 18, d)
     const o = (j * S + i) * 4
     px[o] = r; px[o + 1] = g; px[o + 2] = b; px[o + 3] = Math.round(bg * 255)
   }

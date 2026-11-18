@@ -45,7 +45,7 @@ export function Icon({ name, size = 16 }: { name: IconName; size?: number }) {
       height={size}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.8}
+      strokeWidth={1.4}
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -57,4 +57,4 @@ export function Icon({ name, size = 16 }: { name: IconName; size?: number }) {
 
 /** Versión en texto para HTML generado fuera de React (vista previa). */
 export const iconHtml = (name: IconName, size = 15) =>
-  `<svg class="ico" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${PATHS[name]}"/></svg>`
+  `<svg class="ico" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${PATHS[name]}"/></svg>`

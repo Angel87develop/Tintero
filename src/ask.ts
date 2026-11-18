@@ -36,6 +36,9 @@ export function askText(title: string, initial = ''): Promise<string | null> {
     }
     cancel.onclick = () => done(null)
     back.onmousedown = (e) => e.target === back && done(null)
-    input.onkeydown = (e) => e.key === 'Escape' && done(null)
+    // Sin valor de retorno: devolver false en on* cancelaría la pulsación de cada tecla.
+    input.onkeydown = (e) => {
+      if (e.key === 'Escape') done(null)
+    }
   })
 }
