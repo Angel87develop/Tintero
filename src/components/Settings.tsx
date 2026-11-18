@@ -300,6 +300,7 @@ function EditorSection({ s, set }: { s: SettingsT; set: (p: Partial<SettingsT>) 
       <Row label="Corrector ortográfico"><Toggle checked={s.spellcheck} onChange={(v) => set({ spellcheck: v })} /></Row>
       <Row label="Comandos con /" hint="Menú al escribir / al inicio de una línea"><Toggle checked={s.slashCommands} onChange={(v) => set({ slashCommands: v })} /></Row>
       <Row label="Emojis con :" hint="Sugerencias al escribir :nombre"><Toggle checked={s.emojiCompletion} onChange={(v) => set({ emojiCompletion: v })} /></Row>
+      <Row label="Autocompletado de Markdown" hint="Tablas, listas, tareas, formato y bloques de código"><Toggle checked={s.markdownAssist} onChange={(v) => set({ markdownAssist: v })} /></Row>
 
       <h3 className="st-h">Interfaz de la nota</h3>
       <Row label="Barra de formato"><Toggle checked={s.showToolbar} onChange={(v) => set({ showToolbar: v })} /></Row>

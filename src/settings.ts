@@ -128,6 +128,7 @@ export interface Settings {
   highlightActiveLine: boolean
   slashCommands: boolean
   emojiCompletion: boolean
+  markdownAssist: boolean
   showToolbar: boolean
   showFooter: boolean
   confirmDelete: boolean
@@ -151,6 +152,7 @@ export const DEFAULT_SETTINGS: Settings = {
   highlightActiveLine: true,
   slashCommands: true,
   emojiCompletion: true,
+  markdownAssist: true,
   showToolbar: true,
   showFooter: true,
   confirmDelete: true,

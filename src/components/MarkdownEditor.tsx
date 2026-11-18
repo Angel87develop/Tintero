@@ -7,6 +7,7 @@ import { HighlightStyle, syntaxHighlighting } from '@codemirror/language'
 import { autocompletion, type CompletionContext, type CompletionResult, type CompletionSource } from '@codemirror/autocomplete'
 import { Prec } from '@codemirror/state'
 import { comboToCM, shortcutOf, type Settings } from '../settings'
+import { assistExtension, assistSources } from '../markdownAssist'
 import { tags as t } from '@lezer/highlight'
 
 const highlight = HighlightStyle.define([
@@ -142,15 +143,18 @@ export function MarkdownEditor({
   lineNumbers: boolean
   settings: Settings
 }) {
-  const { slashCommands, emojiCompletion, spellcheck } = settings
+  const { slashCommands, emojiCompletion, markdownAssist, spellcheck } = settings
   const keys = (['bold', 'italic', 'inlineCode', 'strike', 'link'] as const).map((id) => shortcutOf(settings, id)).join('|')
   const extensions = useMemo(() => {
     const sources: CompletionSource[] = []
     if (slashCommands) sources.push(slashSource)
     if (emojiCompletion) sources.push(emojiSource)
+    if (markdownAssist) sources.push(...assistSources)
     const [bold, italic, inlineCode, strike, link] = keys.split('|')
     const bind = (combo: string, fn: (v: EditorView) => void) => (combo ? [{ key: comboToCM(combo), run: (v: EditorView) => (fn(v), true) }] : [])
     return [
+      // Va antes de markdown() para decidir primero qué hacen Enter y Retroceso.
+      ...(markdownAssist ? [assistExtension] : []),
       markdown({ base: markdownLanguage, codeLanguages: languages }),
       syntaxHighlighting(highlight),
       theme,
@@ -165,7 +169,7 @@ export function MarkdownEditor({
         ...bind(link, (v) => wrap(v, '[', '](https://)')),
       ])),
     ]
-  }, [slashCommands, emojiCompletion, spellcheck, keys])
+  }, [slashCommands, emojiCompletion, markdownAssist, spellcheck, keys])
   return (
     <CodeMirror
       className="cm-host"

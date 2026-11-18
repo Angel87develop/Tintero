@@ -23,3 +23,10 @@ diagramas Mermaid, fórmulas KaTeX y cuatro temas. Funciona en el navegador y co
 
 `Ctrl+K` paleta · `Ctrl+N` nueva nota · `Ctrl+E` editor/dividido/vista · `Ctrl+Shift+F` buscar ·
 `Ctrl+\` barra lateral · `/` al inicio de línea para insertar bloques · `:` para emojis.
+
+## Autocompletado de Markdown
+
+- **Tablas:** `Enter` tras el encabezado crea el separador y la primera fila. `Tab` y `Shift+Tab` recorren las celdas.
+- **Listas:** `Tab` y `Shift+Tab` anidan elementos y reajustan la numeración. `- [` seguido de espacio crea una tarea.
+- **Formato:** `**`, `~~` y `` ` `` se cierran solos, y `*`, `_`, `~`, `` ` `` o `$` envuelven la selección.
+- **Bloques:** `Enter` cierra los bloques ` ``` ` y `$$`, con sugerencias de lenguaje y de alertas (`> [!`).
